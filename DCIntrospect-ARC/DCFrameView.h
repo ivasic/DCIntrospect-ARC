@@ -4,6 +4,7 @@
 //  Created by Domestic Cat on 29/04/11.
 //
 
+#import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "DCCrossHairView.h"
 
