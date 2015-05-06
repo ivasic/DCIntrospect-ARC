@@ -26,7 +26,7 @@ NSString* _recursiveDescription(id view, NSUInteger depth);
 
 // Returns true if the current process is being debugged (either 
 // running under the debugger or has a debugger attached post facto).
-static bool AmIBeingDebugged(void)
+__unused static bool AmIBeingDebugged(void)
 {
 	int                 junk;
 	int                 mib[4];
