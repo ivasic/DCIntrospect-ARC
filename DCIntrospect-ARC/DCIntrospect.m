@@ -131,6 +131,12 @@ __unused static bool AmIBeingDebugged(void)
         if (iOS7OrHigher()) {
             self.inputTextView = [[DCTextView alloc] initWithFrame:CGRectMake(0, -100, 100, 100)];
             [(DCTextView*)self.inputTextView setKeyboardInputDelegate: self];
+            
+            if ([self.inputTextView respondsToSelector:@selector(inputAssistantItem)])
+            {
+                self.inputTextView.inputAssistantItem.leadingBarButtonGroups = @[];
+                self.inputTextView.inputAssistantItem.trailingBarButtonGroups = @[];
+            }
         }
         else {
             self.inputTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, -100, 100, 100)];
