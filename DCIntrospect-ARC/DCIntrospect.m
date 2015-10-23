@@ -165,13 +165,15 @@ __unused static bool AmIBeingDebugged(void)
 	
 	// reclaim the keyboard after dismissal if it is taken
 	[[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardDidHideNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
-		self.keyboardVisible = NO;
-		
-		// needs to be done after a delay or else it doesn't work for some reason.
-		if (self.keyboardBindingsOn)
-			[self performSelector:@selector(takeFirstResponder)
-					   withObject:nil
-					   afterDelay:0.1];
+        if (self.keyboardVisible) {
+            self.keyboardVisible = NO;
+            
+            // needs to be done after a delay or else it doesn't work for some reason.
+            if (self.keyboardBindingsOn)
+                [self performSelector:@selector(takeFirstResponder)
+                           withObject:nil
+                           afterDelay:0.1];
+        }
 	}];
     
     // dirty hack for UIWebView keyboard problems
